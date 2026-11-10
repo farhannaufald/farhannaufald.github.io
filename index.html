@@ -3,137 +3,419 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Farhan Naufal | AI Video Producer</title>
-  <meta name="description" content="Farhan Naufal, AI video producer and director from Indonesia. Commercials, product films and company profiles made with generative video.">
+  <title>Farhan Naufal | Content Creator &amp; AI Video Producer</title>
+  <meta name="description" content="Farhan Naufal, content creator and AI video producer from Indonesia. Product commercials, company profiles and social-first videos made with generative AI and finished by hand.">
+  <meta name="theme-color" content="#250FBA">
 
-  <!-- Font: Archivo (Google Fonts) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Farhan Naufal | Content Creator &amp; AI Video Producer">
+  <meta property="og:description" content="Product commercials, company profiles and social-first videos made with generative AI and finished by hand.">
+
+  <!-- Font: Inter, IBM Plex Mono, Instrument Serif -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-  <!-- File CSS kamu -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <a class="brand" href="#top">Farhan Naufal</a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- ========== INTRO / PRELOADER ========== -->
+  <div id="intro" aria-hidden="true">
+    <div class="intro-center">
+      <div class="intro-mark">
+        <svg width="66" height="40" viewBox="0 0 66 40" fill="none">
+          <rect x="6" y="3" width="34" height="34" rx="9" stroke="#fff" stroke-width="2.4"/>
+          <path d="M44 11 L60 20 L44 29 Z" stroke="#B3ABFF" stroke-width="2.4" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="intro-word">FARHAN NAUFAL<span>CONTENT &amp; AI VIDEO</span></div>
+    </div>
+    <div class="intro-count"><span id="introNum">0</span><i>%</i></div>
+    <div class="intro-bar"><i id="introBar"></i></div>
+  </div>
+
+  <!-- ========== NAV ========== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo"><span class="dot">F</span>Farhan Naufal</a>
+      <nav class="navlinks" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://wa.me/6281807350446" target="_blank" rel="noopener" class="btn">
+          <span class="ic">↗</span><span class="lbl">Let's talk</span>
+        </a>
+      </div>
+      <button class="burger" id="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </header>
 
-  <main id="top">
+  <div class="mobile-menu" id="mm" aria-hidden="true">
+    <button class="mm-close" id="mmClose" type="button">CLOSE ✕</button>
+    <a href="#work"><span>01</span>Work</a>
+    <a href="#services"><span>02</span>Services</a>
+    <a href="#process"><span>03</span>Process</a>
+    <a href="#about"><span>04</span>About</a>
+    <a href="#contact"><span>05</span>Contact</a>
+  </div>
 
-    <!-- ========== HERO: bingkai viewfinder kamera ========== -->
-    <section class="hero" aria-label="Introduction">
-      <div class="viewfinder">
-        <span class="corner corner-tl" aria-hidden="true"></span>
-        <span class="corner corner-tr" aria-hidden="true"></span>
-        <span class="corner corner-bl" aria-hidden="true"></span>
-        <span class="corner corner-br" aria-hidden="true"></span>
+  <main class="page">
 
-        <div class="vf-row vf-top" aria-hidden="true">
-          <span class="rec"><span class="rec-dot"></span><span id="timecode">00:00:00:00</span></span>
-          <span>16:9 / 24 fps</span>
+    <!-- ========== HERO (biru) ========== -->
+    <section class="hero" id="top">
+      <div class="hero-media" id="heroMedia" aria-hidden="true">
+        <div class="hero-glow"></div>
+        <div class="hero-grid"></div>
+      </div>
+
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <div class="hero-eyebrow rv">Content Creator · AI Video Producer · Indonesia</div>
+          <h1 class="rv">
+            <span class="l1">Stories that stop</span><br>
+            <span class="l2">the scroll.</span>
+          </h1>
+          <p class="hero-sub rv d1">I write, generate and edit videos for brands: product commercials, company profiles and social-first content, made with AI and finished by hand.</p>
+          <div class="hero-actions rv d2">
+            <a href="#contact" class="btn light"><span class="ic">↗</span><span class="lbl">Start a project</span></a>
+            <a href="#work" class="txtlink">See the work →</a>
+          </div>
+        </div>
+        <div class="hero-trust rv d3">Trained in film and television. Producing AI video for brands from Bekasi, Indonesia.</div>
+      </div>
+
+      <div class="hero-bottom wrap">
+        <div class="hero-logos" aria-label="Tools I work with">
+          <div class="hl-track" id="toolTrack"></div>
+        </div>
+        <a href="#work" class="hero-mini">
+          <div class="mthumb"><span>▶</span></div>
+          <div class="mt"><b>Showreel 2026</b><span>SELECTED WORK</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== STATEMENT ========== -->
+    <section class="statement">
+      <div class="wrap">
+        <p class="big" data-split>Written by a person. Generated with AI. Finished by hand, frame by frame.</p>
+        <p class="stmt-foot rv">I keep the process small on purpose: one person who understands both the story and the tools, from the first line of script to the final cut that goes on your feed.</p>
+      </div>
+    </section>
+
+    <!-- ========== BENTO STATS ========== -->
+    <section class="stats">
+      <div class="wrap bento">
+        <div class="cell b-dark rv">
+          <div class="ico">↗</div>
+          <div class="big"><span data-count="0" id="countWorks">0</span></div>
+          <div class="lbl">Selected films and campaigns in this portfolio.</div>
         </div>
 
-        <div class="hero-body">
-          <h1 class="hero-name">Farhan<br>Naufal</h1>
-          <p class="hero-role">AI video producer and director. I make commercials, product films and company profiles with generative video, built on a background in film and television.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#work">See the work</a>
-            <a class="btn" href="#contact">Start a project</a>
+        <div class="b-col rv d1">
+          <div class="cell b-soft">
+            <div class="b-avatars" aria-hidden="true">
+              <span class="av">V</span><span class="av">S</span><span class="av">H</span><span class="av">N</span>
+            </div>
+            <b><span data-count="7">0</span> <span>AI tools in my pipeline</span></b>
+          </div>
+          <div class="cell b-mini">
+            <div class="n"><span data-count="5">0</span>+</div>
+            <div class="t">Years in film and television production.</div>
           </div>
         </div>
 
-        <div class="vf-row vf-bottom">
+        <div class="cell b-radial rv d2">
+          <div class="rad"><div class="burst"></div><div class="bico">▶</div></div>
+          <div>
+            <h4>Fast turnaround</h4>
+            <p>AI-accelerated production. From brief to final cut in days, not weeks.</p>
+          </div>
+        </div>
+
+        <div class="cell b-quote rv d3">
+          <div class="qbrand">Since 2021</div>
+          <div>
+            <div class="qm">”</div>
+            <div class="qtxt">Film school trained and set tested. The habits of a real production crew sit behind every generated frame.</div>
+          </div>
+          <div class="qby">ISI Surakarta · Fremantle Indonesia</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TICKER ========== -->
+    <div class="ticker" aria-hidden="true">
+      <div class="track">
+        <div class="it"><span class="tag">// FARHAN NAUFAL</span> Open for projects: product commercials, company profiles and social-first ads. <span class="sep"></span> Vertical 9:16 for Reels, TikTok and Threads. <span class="sep"></span> Widescreen 16:9 for web and screens. <span class="sep"></span></div>
+        <div class="it"><span class="tag">// FARHAN NAUFAL</span> Open for projects: product commercials, company profiles and social-first ads. <span class="sep"></span> Vertical 9:16 for Reels, TikTok and Threads. <span class="sep"></span> Widescreen 16:9 for web and screens. <span class="sep"></span></div>
+      </div>
+    </div>
+
+    <!-- ========== WORK ========== -->
+    <section class="sec work-sec" id="work">
+      <div class="giant-marquee" aria-hidden="true">
+        <div class="gm-track" id="gmTrack"></div>
+      </div>
+
+      <div class="wrap">
+        <div class="work-head">
+          <div class="eyebrow rv">01 — Selected work · Vertical</div>
+          <p class="rt rv d1">Drag to browse, hover to preview, click to play with sound. Made for Reels, TikTok and Threads.</p>
+        </div>
+        <div class="work-tabs rv" id="workTabs"></div>
+        <div class="work-rail">
+          <div class="work-carousel" id="workGrid"></div>
+        </div>
+        <div class="work-nav">
+          <button type="button" id="wPrev" aria-label="Previous">←</button>
+          <button type="button" id="wNext" aria-label="Next">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec land-sec" id="landscape">
+      <div class="wrap">
+        <div class="work-head">
+          <div class="eyebrow rv">02 — Widescreen films · 16:9</div>
+          <p class="rt rv d1">Company profiles and brand films for web, presentations and big screens.</p>
+        </div>
+        <div class="work-rail">
+          <div class="work-carousel land" id="landscapeGrid"></div>
+        </div>
+        <div class="work-nav">
+          <button type="button" id="lPrev" aria-label="Previous">←</button>
+          <button type="button" id="lNext" aria-label="Next">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES (gelap) ========== -->
+    <section class="dark sec blk-dark" id="services">
+      <div class="wrap cap2">
+        <div class="cap2-left">
+          <div class="cap-eyebrow rv"><span class="oval"></span><span class="lbl">03 — Services</span><span class="line"></span></div>
+          <p class="cap2-intro rv d1">Content and video that sits between AI-scale production and human craft. Every piece is scripted, directed and edited by me.</p>
+          <div class="cap2-foot">
+            <h2 class="rv">One creator.<br>Every part of<br>the production.</h2>
+            <a href="#contact" class="btn light rv d1"><span class="ic">↗</span><span class="lbl">Book a call</span></a>
+          </div>
+        </div>
+
+        <div class="cap2-deck rv d1" id="capDeck">
+          <div class="cpanel active" tabindex="0">
+            <div class="cp-num">01</div>
+            <div class="cp-tab"><span>Product commercials</span></div>
+            <div class="cp-body">
+              <h3>Product commercials</h3>
+              <p>Perfume, jewelry, food and beauty films with consistent talent and accurate product shots, built to hold up next to big-budget campaigns.</p>
+              <ul class="cp-tags"><li>Concept &amp; script</li><li>AI talent</li><li>Product shots</li><li>Color &amp; sound</li></ul>
+              <div class="cp-art" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="cpanel" tabindex="0">
+            <div class="cp-num">02</div>
+            <div class="cp-tab"><span>Company profiles</span></div>
+            <div class="cp-body">
+              <h3>Company profiles</h3>
+              <p>One to three minute brand films with voice-over, built from your business story and shaped for web, pitch decks and events.</p>
+              <ul class="cp-tags"><li>Story interview</li><li>Voice-over</li><li>16:9 master</li><li>Cut-downs</li></ul>
+              <div class="cp-art" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="cpanel" tabindex="0">
+            <div class="cp-num">03</div>
+            <div class="cp-tab"><span>Social-first ads</span></div>
+            <div class="cp-body">
+              <h3>Social-first ads</h3>
+              <p>Vertical 9:16 videos paced for Reels, TikTok and Threads: hooks in the first second, captions burned in, ready to post.</p>
+              <ul class="cp-tags"><li>Hook writing</li><li>9:16 edits</li><li>Captions</li><li>A/B versions</li></ul>
+              <div class="cp-art" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="cpanel" tabindex="0">
+            <div class="cp-num">04</div>
+            <div class="cp-tab"><span>Content creation</span></div>
+            <div class="cp-body">
+              <h3>Content creation</h3>
+              <p>Ongoing content for your brand account: content pillars, monthly calendars, scripts and creator-style videos that keep the feed alive.</p>
+              <ul class="cp-tags"><li>Content plan</li><li>UGC style</li><li>AI presenters</li><li>Monthly batches</li></ul>
+              <div class="cp-art" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="cpanel" tabindex="0">
+            <div class="cp-num">05</div>
+            <div class="cp-tab"><span>AI photography</span></div>
+            <div class="cp-body">
+              <h3>AI photography</h3>
+              <p>Talent, lookbook and product images to match your videos or stand on their own, for e-commerce, ads and catalogs.</p>
+              <ul class="cp-tags"><li>Lookbooks</li><li>Product stills</li><li>Key visuals</li><li>Ad creative</li></ul>
+              <div class="cp-art" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VISION (gelap) ========== -->
+    <section class="dark vision blk-dark">
+      <div class="wrap">
+        <div class="vision-eyebrow"><span class="lb">What I believe</span><span class="ln"></span><span class="cap"></span></div>
+        <p class="big" data-split>AI should not replace the storyteller. It should <em>amplify</em> the craft. The machine does the heavy lifting; the idea and the finish stay human.</p>
+      </div>
+    </section>
+
+    <!-- ========== FEATURES (gelap) ========== -->
+    <section class="dark sec blk-dark feat-sec">
+      <div class="wrap">
+        <div class="feat-grid rv">
+          <div class="feat-cell">
+            <div class="ci">✎</div>
+            <p class="ct"><b>Human-written scripts</b>, never auto-generated.</p>
+          </div>
+          <div class="feat-cell">
+            <div class="ci">◎</div>
+            <p class="ct"><b>Consistent AI talent</b> across every shot and video.</p>
+          </div>
+          <div class="feat-cell">
+            <div class="ci">✂</div>
+            <p class="ct"><b>Every cut, grade and mix</b> finished by hand.</p>
+          </div>
+          <div class="feat-cell">
+            <div class="ci">▣</div>
+            <p class="ct"><b>Ready-to-post formats</b> for feed, web and screens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROCESS (gelap) ========== -->
+    <section class="dark sec blk-dark" id="process">
+      <div class="wrap">
+        <div class="proc-head">
+          <div class="eyebrow light rv">04 — Process</div>
+          <h2 class="proc-title rv d1">From first brief to final cut. The same rhythm, every project.</h2>
+        </div>
+        <div class="proc2">
+          <div class="proc2-illu rv" aria-hidden="true">
+            <div class="frames">
+              <div class="fr fr1"><span>9:16</span></div>
+              <div class="fr fr2"><span>REC ●</span></div>
+              <div class="fr fr3"><span>16:9</span></div>
+            </div>
+          </div>
+          <div class="proc-list rv d1" id="proc">
+            <div class="proc-item open" tabindex="0">
+              <div class="bar"><span class="no">01</span><h3>Brief</h3><span class="ptag">Day 1</span></div>
+              <div class="body"><p>A short call about the product, the audience and where the video will run. Send what you have: photos, references, a rough idea.</p></div>
+            </div>
+            <div class="proc-item" tabindex="0">
+              <div class="bar"><span class="no">02</span><h3>Script &amp; assets</h3><span class="ptag">Day 2–3</span></div>
+              <div class="body"><p>A written concept and shot list, plus the talent and product assets designed so they stay consistent in every scene.</p></div>
+            </div>
+            <div class="proc-item" tabindex="0">
+              <div class="bar"><span class="no">03</span><h3>Generate &amp; direct</h3><span class="ptag">Production</span></div>
+              <div class="body"><p>Every shot is generated and directed one by one, with retakes until the motion, light and product look right.</p></div>
+            </div>
+            <div class="proc-item" tabindex="0">
+              <div class="bar"><span class="no">04</span><h3>Edit &amp; deliver</h3><span class="ptag">Handover</span></div>
+              <div class="body"><p>Cut, color, sound and captions, then final masters in every format you need, with one round of revisions included.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="sec about-sec" id="about">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow rv">05 — About</div>
+            <h2 class="giant rv d1">About</h2>
+          </div>
+          <p class="rt rv d2">Content creator and AI video producer, with a background in film and television.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text rv">
+            <p>I studied film and television at ISI Surakarta and learned production on real sets, including a contestant-team role on <em>Supermarket Sweep</em> for Fremantle Indonesia.</p>
+            <p>Today I create content and direct AI video through my studio, Hanoora. I write the script, design the talent and product assets, generate every shot and edit the final cut, so a brand gets one person who understands both the story and the tools.</p>
+            <div class="chips" id="toolChips"></div>
+          </div>
+          <dl class="credits rv d1">
+            <div><dt>Founder and AI content producer</dt><dd><span>Hanoora Studio</span><span>2026 — now</span></dd></div>
+            <div><dt>AI automation and digital content</dt><dd><span>Han Creative Studio</span><span>2026 — now</span></dd></div>
+            <div><dt>Production assistant, <em>Supermarket Sweep</em></dt><dd><span>Fremantle Indonesia</span><span>2024 — 2026</span></dd></div>
+            <div><dt>Film and Television</dt><dd><span>ISI Surakarta</span><span>Since 2021</span></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA (biru) ========== -->
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <div class="eyebrow light rv">06 — Contact</div>
+        <h2 class="rv d1">Have a story<br>worth <em>filming?</em></h2>
+        <p class="rv d2">Send a short brief: what you sell, where the video will run and when you need it. I usually reply within a day.</p>
+        <div class="cta-actions rv d3">
+          <a href="https://wa.me/6281807350446" target="_blank" rel="noopener" class="btn light"><span class="ic">↗</span><span class="lbl">Chat on WhatsApp</span></a>
+          <a href="mailto:farhannaufal0005@gmail.com" class="txtlink">farhannaufal0005@gmail.com →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="foot">
+      <div class="wrap">
+        <div class="foot-top">
+          <div class="foot-brand">
+            <a href="#top" class="logo"><span class="dot">F</span>Farhan Naufal</a>
+            <p>Content creator and AI video producer. Commercials, company profiles and social-first videos for brands.</p>
+          </div>
+          <div class="foot-col">
+            <h4>Navigate</h4>
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#about">About</a>
+          </div>
+          <div class="foot-col">
+            <h4>Contact</h4>
+            <a href="mailto:farhannaufal0005@gmail.com">Email</a>
+            <a href="https://wa.me/6281807350446" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+          <div class="foot-col">
+            <h4>Follow</h4>
+            <a href="https://www.linkedin.com/in/farhannaufaldwiantoroarif" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://hanoorastudio.com" target="_blank" rel="noopener">Hanoora Studio</a>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>&copy; <span id="year"></span> Farhan Naufal Dwiantoro Arif</span>
           <span>Bekasi, Indonesia</span>
-          <span>Open for projects</span>
         </div>
+        <div class="foot-huge" aria-hidden="true">FARHAN</div>
       </div>
-    </section>
-
-    <!-- ========== KARYA (diisi otomatis dari script.js) ========== -->
-    <section id="work" class="section">
-      <div class="section-head">
-        <h2>Selected work</h2>
-        <p>Tap a frame to play. Vertical pieces are made for Reels, TikTok and Threads. Wide pieces are made for web, presentations and screens.</p>
-      </div>
-      <div class="contact-sheet" id="work-grid"></div>
-    </section>
-
-    <!-- ========== TENTANG ========== -->
-    <section id="about" class="section">
-      <h2>About</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>I studied film and television at ISI Surakarta and learned production on real sets, including a contestant-team role on <em>Supermarket Sweep</em> for Fremantle Indonesia.</p>
-          <p>Today I direct and produce AI video through my studio, Hanoora. I write the script, design the talent and product assets, generate every shot and edit the final cut, so a brand gets one person who understands both the story and the tools.</p>
-        </div>
-        <dl class="credits">
-          <div><dt>Founder and AI content producer, Hanoora Studio</dt><dd>2026 to now</dd></div>
-          <div><dt>AI automation and digital content, Han Creative Studio</dt><dd>2026 to now</dd></div>
-          <div><dt>Production assistant, Supermarket Sweep, Fremantle Indonesia</dt><dd>2024 to 2026</dd></div>
-          <div><dt>Film and Television, ISI Surakarta</dt><dd>Since 2021</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <!-- ========== LAYANAN ========== -->
-    <section class="section">
-      <h2>What I make</h2>
-      <ul class="service-list">
-        <li>
-          <h3>Product commercials</h3>
-          <p>Perfume, jewelry, food and beauty films with consistent talent and accurate product shots.</p>
-        </li>
-        <li>
-          <h3>Company profiles</h3>
-          <p>One to three minute brand films with voice-over, built from your business story.</p>
-        </li>
-        <li>
-          <h3>Social-first ads</h3>
-          <p>Vertical 9:16 videos paced for Reels, TikTok and Threads, ready to post.</p>
-        </li>
-        <li>
-          <h3>AI photography</h3>
-          <p>Talent, lookbook and product images to match your videos or stand on their own.</p>
-        </li>
-      </ul>
-      <p class="tool-line"><strong>Tools I work with:</strong> Google Flow (Veo), Seedance, Higgsfield, Dreamina, Leonardo, Seedream and Nano Banana.</p>
-    </section>
-
-    <!-- ========== KONTAK ========== -->
-    <section id="contact" class="contact">
-      <div class="contact-inner">
-        <h2>Have a product or a story to film?</h2>
-        <p>Send a short brief: what you sell, where the video will run and when you need it.</p>
-        <a class="contact-email" href="mailto:farhannaufal0005@gmail.com">farhannaufal0005@gmail.com</a>
-        <ul class="contact-links">
-          <li><a href="https://wa.me/6281807350446" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="https://www.linkedin.com/in/farhannaufaldwiantoroarif" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://hanoorastudio.com" target="_blank" rel="noopener">Hanoora Studio</a></li>
-        </ul>
-      </div>
-    </section>
+    </footer>
 
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Farhan Naufal Dwiantoro Arif</p>
-  </footer>
-
-  <!-- Pemutar video (muncul saat kartu karya diketuk) -->
+  <!-- Pemutar video (muncul saat kartu karya diklik) -->
   <dialog id="player" aria-label="Video player">
-    <button class="player-close" type="button">Close</button>
+    <button class="player-close" type="button">Close ✕</button>
     <div class="player-frame" id="player-frame"></div>
     <p class="player-caption" id="player-caption"></p>
   </dialog>
 
-  <!-- File JavaScript kamu -->
-  <script src="script.js"></script>
+  <!-- Smooth scroll (Lenis). Kalau gagal dimuat, website tetap jalan normal. -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
