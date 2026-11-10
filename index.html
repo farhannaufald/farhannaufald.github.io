@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -24,10 +24,7 @@
   <div id="intro" aria-hidden="true">
     <div class="intro-center">
       <div class="intro-mark">
-        <svg width="66" height="40" viewBox="0 0 66 40" fill="none">
-          <rect x="6" y="3" width="34" height="34" rx="9" stroke="#fff" stroke-width="2.4"/>
-          <path d="M44 11 L60 20 L44 29 Z" stroke="#B3ABFF" stroke-width="2.4" stroke-linejoin="round"/>
-        </svg>
+        <img src="media/caricature.png" width="120" height="120" alt="">
       </div>
       <div class="intro-word">FARHAN NAUFAL<span>CONTENT &amp; AI VIDEO</span></div>
     </div>
@@ -38,7 +35,7 @@
   <!-- ========== NAV ========== -->
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#top" class="logo"><span class="dot">F</span>Farhan Naufal</a>
+      <a href="#top" class="logo"><img class="avatar" src="media/profile.jpg?v=4" width="38" height="38" alt="">Farhan Naufal</a>
       <nav class="navlinks" aria-label="Main">
         <a href="#work">Work</a>
         <a href="#services">Services</a>
@@ -376,7 +373,7 @@
       <div class="wrap">
         <div class="foot-top">
           <div class="foot-brand">
-            <a href="#top" class="logo"><span class="dot">F</span>Farhan Naufal</a>
+            <a href="#top" class="logo"><img class="avatar" src="media/profile.jpg?v=4" width="38" height="38" alt="">Farhan Naufal</a>
             <p>Content creator and AI video producer. Commercials, company profiles and social-first videos for brands.</p>
           </div>
           <div class="foot-col">
@@ -407,6 +404,20 @@
 
   </main>
 
+  <!-- Pemutar lagu (kiri bawah). Ganti lagu: ubah src dan judul di sini. -->
+  <div class="music" id="music">
+    <button class="mu-btn" id="muBtn" type="button" aria-label="Play music">
+      <span class="mu-play" aria-hidden="true">▶</span>
+      <span class="mu-pause" aria-hidden="true"><i></i><i></i></span>
+    </button>
+    <div class="mu-info"><b>Pulang</b><span id="muState">Tap to play</span></div>
+    <div class="mu-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <audio id="bgm" src="media/pulang.mp3" loop preload="auto"></audio>
+  </div>
+
+  <!-- Efek grain di seluruh layar -->
+  <div class="grain" aria-hidden="true"></div>
+
   <!-- Pemutar video (muncul saat kartu karya diklik) -->
   <dialog id="player" aria-label="Video player">
     <button class="player-close" type="button">Close ✕</button>
@@ -416,6 +427,6 @@
 
   <!-- Smooth scroll (Lenis). Kalau gagal dimuat, website tetap jalan normal. -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-  <script src="script.js?v=2" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

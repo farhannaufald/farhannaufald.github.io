@@ -212,8 +212,9 @@ const HERO_VIDEO = "";
     player.classList.toggle("is-vertical", isVertical(p));
     player.showModal();
     if (lenis) lenis.stop();
+    music.duck(true);
   }
-  player.addEventListener("close", () => { frame.innerHTML = ""; if (lenis) lenis.start(); });
+  player.addEventListener("close", () => { frame.innerHTML = ""; if (lenis) lenis.start(); music.duck(false); });
   $(".player-close", player).addEventListener("click", () => player.close());
   player.addEventListener("click", e => { if (e.target === player) player.close(); });
 
@@ -253,8 +254,21 @@ const HERO_VIDEO = "";
 
   /* ---------- Nav & menu HP ---------- */
   const nav = $("#nav");
-  const onNav = () => nav.classList.toggle("scrolled", scrollY > 40);
-  addEventListener("scroll", onNav, { passive: true }); onNav();
+  // Cek bagian apa yang ada di belakang menu: putih -> teks gelap, biru/gelap -> teks putih
+  const blocks = $$(".page > *");
+  const isLight = b => !b.matches(".hero, .cta, .dark, .ticker, .foot");
+  let navTick = false;
+  const onNav = () => {
+    navTick = false;
+    nav.classList.toggle("scrolled", scrollY > 40);
+    const y = nav.getBoundingClientRect().top + nav.offsetHeight / 2;
+    const under = blocks.find(b => { const r = b.getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
+    nav.classList.toggle("on-light", !!under && isLight(under));
+  };
+  const reqNav = () => { if (!navTick) { navTick = true; requestAnimationFrame(onNav); } };
+  addEventListener("scroll", reqNav, { passive: true });
+  addEventListener("resize", reqNav, { passive: true });
+  onNav();
 
   const mm = $("#mm");
   const setMenu = open => { mm.classList.toggle("open", open); mm.setAttribute("aria-hidden", String(!open)); if (lenis) open ? lenis.stop() : lenis.start(); };
@@ -351,6 +365,71 @@ const HERO_VIDEO = "";
     });
   }
 
+  /* ---------- Lagu latar (kiri bawah) ---------- */
+  const music = (() => {
+    const box = $("#music"), audio = $("#bgm"), btn = $("#muBtn"), state = $("#muState");
+    const VOL = 0.55;
+    let userPaused = false, ducked = false, fadeId = 0;
+    try { userPaused = localStorage.getItem("bgm") === "off"; } catch (_) {}
+    const remember = v => { try { localStorage.setItem("bgm", v); } catch (_) {} };
+
+    const ui = () => {
+      const on = !audio.paused;
+      box.classList.toggle("playing", on);
+      btn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+      state.textContent = on ? "Now playing" : (userPaused ? "Paused" : "Tap to play");
+    };
+    const fade = (to, ms, done) => {
+      const id = ++fadeId, from = audio.volume, t0 = performance.now();
+      const step = now => {
+        if (id !== fadeId) return;
+        const k = Math.min(1, (now - t0) / ms);
+        audio.volume = Math.max(0, Math.min(1, from + (to - from) * k));
+        if (k < 1) requestAnimationFrame(step); else if (done) done();
+      };
+      requestAnimationFrame(step);
+    };
+    const play = () => {
+      audio.volume = 0;
+      return audio.play().then(() => { fade(VOL, 1800); ui(); });
+    };
+    const pause = () => fade(0, 350, () => { audio.pause(); ui(); });
+
+    // Browser sering memblokir lagu sebelum pengunjung menyentuh layar.
+    // Kalau diblokir, lagu mulai di sentuhan/klik/tombol pertama.
+    const onFirstGesture = e => {
+      if (box.contains(e.target)) return;
+      off();
+      if (!userPaused && !ducked && audio.paused) play().catch(() => {});
+    };
+    const evs = ["pointerdown", "keydown", "touchstart"];
+    const off = () => evs.forEach(t => removeEventListener(t, onFirstGesture, true));
+    const waitGesture = () => evs.forEach(t => addEventListener(t, onFirstGesture, true));
+
+    btn.addEventListener("click", () => {
+      off();
+      if (audio.paused) { userPaused = false; remember("on"); play().catch(() => {}); }
+      else { userPaused = true; remember("off"); pause(); }
+    });
+    audio.addEventListener("pause", ui);
+    audio.addEventListener("play", ui);
+    ui();
+
+    return {
+      start() {
+        box.classList.add("show");
+        if (userPaused) return ui();
+        play().catch(() => { ui(); waitGesture(); });
+      },
+      // kecilkan lagu saat video karya diputar
+      duck(on) {
+        ducked = on;
+        if (on && !audio.paused) { box.dataset.resume = "1"; pause(); }
+        else if (!on && box.dataset.resume) { delete box.dataset.resume; play().catch(() => {}); }
+      }
+    };
+  })();
+
   /* ---------- Intro / preloader ---------- */
   const intro = $("#intro");
   document.body.classList.add("intro-lock");
@@ -360,6 +439,7 @@ const HERO_VIDEO = "";
     document.body.classList.remove("intro-lock");
     if (lenis) lenis.start();
     $$(".hero .rv").forEach(n => n.classList.add("in"));
+    music.start();
     setTimeout(() => intro.remove(), 1150);
   };
   if (reduce) { setTimeout(finish, 300); }
