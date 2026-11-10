@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farhan Naufal | AI Video Producer</title>
+  <meta name="description" content="Farhan Naufal, AI video producer and director from Indonesia. Commercials, product films and company profiles made with generative video.">
+
+  <!-- Font: Archivo (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+
+  <!-- File CSS kamu -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Farhan Naufal</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== HERO: bingkai viewfinder kamera ========== -->
+    <section class="hero" aria-label="Introduction">
+      <div class="viewfinder">
+        <span class="corner corner-tl" aria-hidden="true"></span>
+        <span class="corner corner-tr" aria-hidden="true"></span>
+        <span class="corner corner-bl" aria-hidden="true"></span>
+        <span class="corner corner-br" aria-hidden="true"></span>
+
+        <div class="vf-row vf-top" aria-hidden="true">
+          <span class="rec"><span class="rec-dot"></span><span id="timecode">00:00:00:00</span></span>
+          <span>16:9 / 24 fps</span>
+        </div>
+
+        <div class="hero-body">
+          <h1 class="hero-name">Farhan<br>Naufal</h1>
+          <p class="hero-role">AI video producer and director. I make commercials, product films and company profiles with generative video, built on a background in film and television.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">See the work</a>
+            <a class="btn" href="#contact">Start a project</a>
+          </div>
+        </div>
+
+        <div class="vf-row vf-bottom">
+          <span>Bekasi, Indonesia</span>
+          <span>Open for projects</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== KARYA (diisi otomatis dari script.js) ========== -->
+    <section id="work" class="section">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <p>Tap a frame to play. Vertical pieces are made for Reels, TikTok and Threads. Wide pieces are made for web, presentations and screens.</p>
+      </div>
+      <div class="contact-sheet" id="work-grid"></div>
+    </section>
+
+    <!-- ========== TENTANG ========== -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I studied film and television at ISI Surakarta and learned production on real sets, including a contestant-team role on <em>Supermarket Sweep</em> for Fremantle Indonesia.</p>
+          <p>Today I direct and produce AI video through my studio, Hanoora. I write the script, design the talent and product assets, generate every shot and edit the final cut, so a brand gets one person who understands both the story and the tools.</p>
+        </div>
+        <dl class="credits">
+          <div><dt>Founder and AI content producer, Hanoora Studio</dt><dd>2026 to now</dd></div>
+          <div><dt>AI automation and digital content, Han Creative Studio</dt><dd>2026 to now</dd></div>
+          <div><dt>Production assistant, Supermarket Sweep, Fremantle Indonesia</dt><dd>2024 to 2026</dd></div>
+          <div><dt>Film and Television, ISI Surakarta</dt><dd>Since 2021</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ========== LAYANAN ========== -->
+    <section class="section">
+      <h2>What I make</h2>
+      <ul class="service-list">
+        <li>
+          <h3>Product commercials</h3>
+          <p>Perfume, jewelry, food and beauty films with consistent talent and accurate product shots.</p>
+        </li>
+        <li>
+          <h3>Company profiles</h3>
+          <p>One to three minute brand films with voice-over, built from your business story.</p>
+        </li>
+        <li>
+          <h3>Social-first ads</h3>
+          <p>Vertical 9:16 videos paced for Reels, TikTok and Threads, ready to post.</p>
+        </li>
+        <li>
+          <h3>AI photography</h3>
+          <p>Talent, lookbook and product images to match your videos or stand on their own.</p>
+        </li>
+      </ul>
+      <p class="tool-line"><strong>Tools I work with:</strong> Google Flow (Veo), Seedance, Higgsfield, Dreamina, Leonardo, Seedream and Nano Banana.</p>
+    </section>
+
+    <!-- ========== KONTAK ========== -->
+    <section id="contact" class="contact">
+      <div class="contact-inner">
+        <h2>Have a product or a story to film?</h2>
+        <p>Send a short brief: what you sell, where the video will run and when you need it.</p>
+        <a class="contact-email" href="mailto:farhannaufal0005@gmail.com">farhannaufal0005@gmail.com</a>
+        <ul class="contact-links">
+          <li><a href="https://wa.me/6281807350446" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/in/farhannaufaldwiantoroarif" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://hanoorastudio.com" target="_blank" rel="noopener">Hanoora Studio</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Farhan Naufal Dwiantoro Arif</p>
+  </footer>
+
+  <!-- Pemutar video (muncul saat kartu karya diketuk) -->
+  <dialog id="player" aria-label="Video player">
+    <button class="player-close" type="button">Close</button>
+    <div class="player-frame" id="player-frame"></div>
+    <p class="player-caption" id="player-caption"></p>
+  </dialog>
+
+  <!-- File JavaScript kamu -->
+  <script src="script.js"></script>
+</body>
+</html>
