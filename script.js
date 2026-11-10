@@ -212,8 +212,9 @@ const HERO_VIDEO = "";
     player.classList.toggle("is-vertical", isVertical(p));
     player.showModal();
     if (lenis) lenis.stop();
+    music.duck(true);
   }
-  player.addEventListener("close", () => { frame.innerHTML = ""; if (lenis) lenis.start(); });
+  player.addEventListener("close", () => { frame.innerHTML = ""; if (lenis) lenis.start(); music.duck(false); });
   $(".player-close", player).addEventListener("click", () => player.close());
   player.addEventListener("click", e => { if (e.target === player) player.close(); });
 
@@ -351,6 +352,71 @@ const HERO_VIDEO = "";
     });
   }
 
+  /* ---------- Lagu latar (kiri bawah) ---------- */
+  const music = (() => {
+    const box = $("#music"), audio = $("#bgm"), btn = $("#muBtn"), state = $("#muState");
+    const VOL = 0.55;
+    let userPaused = false, ducked = false, fadeId = 0;
+    try { userPaused = localStorage.getItem("bgm") === "off"; } catch (_) {}
+    const remember = v => { try { localStorage.setItem("bgm", v); } catch (_) {} };
+
+    const ui = () => {
+      const on = !audio.paused;
+      box.classList.toggle("playing", on);
+      btn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+      state.textContent = on ? "Now playing" : (userPaused ? "Paused" : "Tap to play");
+    };
+    const fade = (to, ms, done) => {
+      const id = ++fadeId, from = audio.volume, t0 = performance.now();
+      const step = now => {
+        if (id !== fadeId) return;
+        const k = Math.min(1, (now - t0) / ms);
+        audio.volume = Math.max(0, Math.min(1, from + (to - from) * k));
+        if (k < 1) requestAnimationFrame(step); else if (done) done();
+      };
+      requestAnimationFrame(step);
+    };
+    const play = () => {
+      audio.volume = 0;
+      return audio.play().then(() => { fade(VOL, 1800); ui(); });
+    };
+    const pause = () => fade(0, 350, () => { audio.pause(); ui(); });
+
+    // Browser sering memblokir lagu sebelum pengunjung menyentuh layar.
+    // Kalau diblokir, lagu mulai di sentuhan/klik/tombol pertama.
+    const onFirstGesture = e => {
+      if (box.contains(e.target)) return;
+      off();
+      if (!userPaused && !ducked && audio.paused) play().catch(() => {});
+    };
+    const evs = ["pointerdown", "keydown", "touchstart"];
+    const off = () => evs.forEach(t => removeEventListener(t, onFirstGesture, true));
+    const waitGesture = () => evs.forEach(t => addEventListener(t, onFirstGesture, true));
+
+    btn.addEventListener("click", () => {
+      off();
+      if (audio.paused) { userPaused = false; remember("on"); play().catch(() => {}); }
+      else { userPaused = true; remember("off"); pause(); }
+    });
+    audio.addEventListener("pause", ui);
+    audio.addEventListener("play", ui);
+    ui();
+
+    return {
+      start() {
+        box.classList.add("show");
+        if (userPaused) return ui();
+        play().catch(() => { ui(); waitGesture(); });
+      },
+      // kecilkan lagu saat video karya diputar
+      duck(on) {
+        ducked = on;
+        if (on && !audio.paused) { box.dataset.resume = "1"; pause(); }
+        else if (!on && box.dataset.resume) { delete box.dataset.resume; play().catch(() => {}); }
+      }
+    };
+  })();
+
   /* ---------- Intro / preloader ---------- */
   const intro = $("#intro");
   document.body.classList.add("intro-lock");
@@ -360,6 +426,7 @@ const HERO_VIDEO = "";
     document.body.classList.remove("intro-lock");
     if (lenis) lenis.start();
     $$(".hero .rv").forEach(n => n.classList.add("in"));
+    music.start();
     setTimeout(() => intro.remove(), 1150);
   };
   if (reduce) { setTimeout(finish, 300); }
