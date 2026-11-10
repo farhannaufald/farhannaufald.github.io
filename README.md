@@ -13,5 +13,5 @@ Portfolio website Farhan Naufal — Content Creator & AI Video Producer.
 - **Video latar hero** (opsional): isi `HERO_VIDEO` di `script.js`, misal `"media/showreel.mp4"`.
 - **Warna**: semua warna ada di bagian `:root` paling atas `style.css`. Biru utama: `--blue: #250FBA`.
 - **Teks** (judul, layanan, proses, about, kontak): langsung di `index.html`.
-- **Setelah mengubah `style.css` atau `script.js`**: naikkan angka `?v=3` di `index.html`
-  (misal jadi `?v=4`) supaya browser pengunjung tidak memakai versi lama dari cache.
+- **Setelah mengubah `style.css` atau `script.js`**: naikkan angka `?v=4` di `index.html`
+  (misal jadi `?v=5`) supaya browser pengunjung tidak memakai versi lama dari cache.

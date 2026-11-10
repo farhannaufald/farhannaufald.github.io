@@ -139,9 +139,49 @@ header.nav { position: fixed; top: 9px; left: 9px; right: 9px; z-index: 100; }
   border-radius: 22px; border: 1px solid transparent; color: #fff;
   transition: background .4s, box-shadow .4s, border-color .4s, color .4s;
 }
+/* Liquid glass (gaya iOS terbaru) setelah di-scroll.
+   Teks putih di atas bagian biru, teks gelap (.on-light) di atas bagian putih. */
+.nav-inner { position: relative; isolation: isolate; }
+.nav-inner::before, .nav-inner::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0; transition: opacity .5s;
+}
+/* kilau cahaya di sisi atas kaca */
+.nav-inner::before {
+  z-index: -1;
+  background:
+    radial-gradient(120% 140% at 12% -40%, rgba(255,255,255,.55), rgba(255,255,255,0) 45%),
+    radial-gradient(80% 120% at 100% 140%, rgba(255,255,255,.22), rgba(255,255,255,0) 50%);
+}
+/* tepi kaca yang memantulkan cahaya */
+.nav-inner::after {
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.15) 35%, rgba(255,255,255,.05) 60%, rgba(255,255,255,.6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
 .nav.scrolled .nav-inner {
-  background: rgba(255,255,255,.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-  border-color: var(--line); box-shadow: 0 14px 36px rgba(15,13,43,.14); color: var(--ink);
+  background: linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.06));
+  backdrop-filter: blur(14px) saturate(190%) brightness(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(190%) brightness(1.08);
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.55),
+    inset 0 -1px 1px rgba(255,255,255,.12),
+    inset 0 0 22px rgba(255,255,255,.1),
+    0 12px 32px rgba(16,10,69,.22);
+}
+.nav.scrolled .nav-inner::before, .nav.scrolled .nav-inner::after { opacity: 1; }
+.nav.scrolled.on-light .nav-inner {
+  color: var(--ink);
+  background: linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.22));
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.9),
+    inset 0 -1px 1px rgba(22,20,42,.06),
+    inset 0 0 22px rgba(255,255,255,.35),
+    0 12px 32px rgba(16,10,69,.12);
+}
+.nav.scrolled.on-light .nav-inner::after {
+  background: linear-gradient(135deg, rgba(255,255,255,1), rgba(22,20,42,.08) 40%, rgba(22,20,42,.04) 65%, rgba(255,255,255,.9));
 }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -.03em; }
 .logo .avatar {
@@ -150,18 +190,18 @@ header.nav { position: fixed; top: 9px; left: 9px; right: 9px; z-index: 100; }
   transition: border-color .4s, transform .4s var(--ease);
 }
 .logo:hover .avatar { transform: rotate(-8deg) scale(1.06); }
-.nav.scrolled .logo .avatar { border-color: var(--blue); }
+.nav.scrolled.on-light .logo .avatar { border-color: var(--blue); }
 .navlinks { display: flex; gap: 30px; font-size: 14px; font-weight: 500; }
 .navlinks a { position: relative; opacity: .7; transition: opacity .25s; }
 .navlinks a:hover { opacity: 1; }
 .navlinks a::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 1.5px; background: currentColor; transition: width .3s; }
-.nav.scrolled .navlinks a::after { background: var(--blue); }
+.nav.scrolled.on-light .navlinks a::after { background: var(--blue); }
 .navlinks a:hover::after { width: 100%; }
 .nav-cta .btn { background: #fff; color: var(--ink); }
 .nav-cta .btn .ic { background: var(--blue); color: #fff; }
-.nav.scrolled .nav-cta .btn { background: var(--ink); color: #fff; }
-.nav.scrolled .nav-cta .btn .ic { background: #fff; color: var(--ink); }
-.nav.scrolled .nav-cta .btn:hover { background: var(--blue); }
+.nav.scrolled.on-light .nav-cta .btn { background: var(--ink); color: #fff; }
+.nav.scrolled.on-light .nav-cta .btn .ic { background: #fff; color: var(--ink); }
+.nav.scrolled.on-light .nav-cta .btn:hover { background: var(--blue); }
 .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: 0; }
 .burger span { width: 24px; height: 2px; background: currentColor; }
 

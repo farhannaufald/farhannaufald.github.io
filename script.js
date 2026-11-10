@@ -254,8 +254,21 @@ const HERO_VIDEO = "";
 
   /* ---------- Nav & menu HP ---------- */
   const nav = $("#nav");
-  const onNav = () => nav.classList.toggle("scrolled", scrollY > 40);
-  addEventListener("scroll", onNav, { passive: true }); onNav();
+  // Cek bagian apa yang ada di belakang menu: putih -> teks gelap, biru/gelap -> teks putih
+  const blocks = $$(".page > *");
+  const isLight = b => !b.matches(".hero, .cta, .dark, .ticker, .foot");
+  let navTick = false;
+  const onNav = () => {
+    navTick = false;
+    nav.classList.toggle("scrolled", scrollY > 40);
+    const y = nav.getBoundingClientRect().top + nav.offsetHeight / 2;
+    const under = blocks.find(b => { const r = b.getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
+    nav.classList.toggle("on-light", !!under && isLight(under));
+  };
+  const reqNav = () => { if (!navTick) { navTick = true; requestAnimationFrame(onNav); } };
+  addEventListener("scroll", reqNav, { passive: true });
+  addEventListener("resize", reqNav, { passive: true });
+  onNav();
 
   const mm = $("#mm");
   const setMenu = open => { mm.classList.toggle("open", open); mm.setAttribute("aria-hidden", String(!open)); if (lenis) open ? lenis.stop() : lenis.start(); };
