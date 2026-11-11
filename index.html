@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
   <!-- ========== NAV ========== -->
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#top" class="logo"><img class="avatar" src="media/profile.jpg?v=4" width="38" height="38" alt="">Farhan Naufal</a>
+      <a href="#about" class="logo" aria-label="About Farhan Naufal"><img class="avatar" src="media/profile.jpg?v=4" width="38" height="38" alt="">Farhan Naufal</a>
       <nav class="navlinks" aria-label="Main">
         <a href="#work">Work</a>
         <a href="#services">Services</a>
@@ -65,17 +65,18 @@
 
     <!-- ========== HERO (biru) ========== -->
     <section class="hero" id="top">
-      <div class="hero-media" id="heroMedia" aria-hidden="true">
+      <!-- Video latar hero (5 detik, diulang terus). Ganti file media/hero.mp4 untuk mengganti video. -->
+      <div class="hero-media has-media" id="heroMedia" aria-hidden="true">
+        <video class="hero-video" src="media/hero.mp4?v=5" poster="media/hero-poster.jpg?v=5" autoplay muted loop playsinline preload="auto"></video>
         <div class="hero-glow"></div>
-        <div class="hero-grid"></div>
       </div>
 
       <div class="hero-inner wrap">
         <div class="hero-copy">
           <div class="hero-eyebrow rv">Content Creator · AI Video Producer · Indonesia</div>
           <h1 class="rv">
-            <span class="l1">Stories that stop</span><br>
-            <span class="l2">the scroll.</span>
+            <span class="l1">Welcome to my</span><br>
+            <em class="l2">Portfolio</em>
           </h1>
           <p class="hero-sub rv d1">I write, generate and edit videos for brands: product commercials, company profiles and social-first content, made with AI and finished by hand.</p>
           <div class="hero-actions rv d2">
@@ -331,12 +332,16 @@
     <!-- ========== ABOUT ========== -->
     <section class="sec about-sec" id="about">
       <div class="wrap">
-        <div class="sec-head">
-          <div>
+        <div class="about-head">
+          <figure class="about-photo rv">
+            <img src="media/portrait.jpg?v=5" width="900" height="900" alt="Farhan Naufal" loading="lazy">
+            <figcaption>Farhan Naufal · Bekasi, Indonesia</figcaption>
+          </figure>
+          <div class="about-title">
             <div class="eyebrow rv">05 — About</div>
-            <h2 class="giant rv d1">About</h2>
+            <h2 class="rv d1">About <em>me</em></h2>
+            <p class="rt rv d2">Content creator and AI video producer, with a background in film and television.</p>
           </div>
-          <p class="rt rv d2">Content creator and AI video producer, with a background in film and television.</p>
         </div>
 
         <div class="about-grid">
@@ -427,6 +432,6 @@
 
   <!-- Smooth scroll (Lenis). Kalau gagal dimuat, website tetap jalan normal. -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-  <script src="script.js?v=4" defer></script>
+  <script src="script.js?v=5" defer></script>
 </body>
 </html>
