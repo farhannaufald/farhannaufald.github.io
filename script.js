@@ -83,8 +83,7 @@ const projects = [
 /* Tools yang tampil berjalan di hero dan di bagian About */
 const tools = ["Google Flow (Veo)", "Seedance", "Higgsfield", "Dreamina", "Leonardo", "Seedream", "Nano Banana"];
 
-/* (Opsional) video latar hero, misal "media/showreel.mp4". Kosongkan untuk latar biru polos. */
-const HERO_VIDEO = "";
+/* Video latar hero ada di index.html (file media/hero.mp4). */
 
 
 /* =========================================================
@@ -111,12 +110,11 @@ const HERO_VIDEO = "";
     gm.appendChild(s);
   }
 
-  if (HERO_VIDEO) {
-    const hm = $("#heroMedia");
-    const v = el("video");
-    Object.assign(v, { src: HERO_VIDEO, muted: true, loop: true, autoplay: true, playsInline: true });
-    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
-    hm.prepend(v); hm.classList.add("has-media");
+  // Video hero: selalu tanpa suara; dihentikan bagi pengunjung yang memilih "kurangi gerakan"
+  const heroVid = $(".hero-video");
+  if (heroVid) {
+    heroVid.muted = true;
+    if (reduce) heroVid.pause(); else heroVid.play().catch(() => {});
   }
 
   /* ---------- Kartu karya ---------- */

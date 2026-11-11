@@ -10,8 +10,8 @@ Portfolio website Farhan Naufal — Content Creator & AI Video Producer.
   - Opsional: `video: "media/nama.mp4"` untuk preview saat kursor di atas kartu,
     dan `thumbnail: "media/nama.jpg"` untuk gambar sampul.
 - **Tools** yang berjalan di hero: array `tools` di `script.js`.
-- **Video latar hero** (opsional): isi `HERO_VIDEO` di `script.js`, misal `"media/showreel.mp4"`.
+- **Video latar hero**: ganti file `media/hero.mp4` (dan gambar sampul `media/hero-poster.jpg`), lalu naikkan angka `?v=` pada tag `<video>` di `index.html`.
 - **Warna**: semua warna ada di bagian `:root` paling atas `style.css`. Biru utama: `--blue: #250FBA`.
 - **Teks** (judul, layanan, proses, about, kontak): langsung di `index.html`.
-- **Setelah mengubah `style.css` atau `script.js`**: naikkan angka `?v=4` di `index.html`
-  (misal jadi `?v=5`) supaya browser pengunjung tidak memakai versi lama dari cache.
+- **Setelah mengubah `style.css` atau `script.js`**: naikkan angka `?v=5` di `index.html`
+  (misal jadi `?v=6`) supaya browser pengunjung tidak memakai versi lama dari cache.
